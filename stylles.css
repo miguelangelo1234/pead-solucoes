@@ -111,19 +111,32 @@ ul {
 
 .logo {
   display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-img {
+  width: clamp(40px, 7.5vw, 72px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.logo-text {
+  display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  line-height: 1;
 }
 
 .logo-main {
   font-weight: 800;
   color: var(--green);
   letter-spacing: 0.12em;
-  font-size: 0.9rem;
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
 }
 
 .logo-sub {
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 1.6vw, 0.9rem);
   color: #cbd5f5;
 }
 
@@ -644,5 +657,16 @@ ul {
     bottom: 1rem;
     width: 3rem;
     height: 3rem;
+  }
+}
+
+/* Ajustes adicionais para logo em telas muito pequenas */
+@media (max-width: 420px) {
+  .logo-text {
+    display: none;
+  }
+
+  .logo-img {
+    width: clamp(32px, 9vw, 48px);
   }
 }
