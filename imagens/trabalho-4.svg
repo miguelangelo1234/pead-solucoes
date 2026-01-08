@@ -1,0 +1,8 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#f0f4ff"/>
+  <circle cx="150" cy="100" r="50" fill="#19a974" opacity="0.6"/>
+  <circle cx="450" cy="300" r="60" fill="#12835a" opacity="0.5"/>
+  <text x="300" y="180" font-size="32" fill="#0b2545" text-anchor="middle" font-weight="bold">Projeto 4</text>
+  <text x="300" y="220" font-size="18" fill="#1f2933" text-anchor="middle">Conexões PEAD</text>
+  <text x="300" y="250" font-size="14" fill="rgba(31,41,51,0.7)" text-anchor="middle">Infraestrutura</text>
+</svg>

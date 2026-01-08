@@ -1,0 +1,14 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad7" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0b2545;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#19a974;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#grad7)"/>
+  <circle cx="100" cy="50" r="40" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="550" cy="350" r="50" fill="rgba(255,255,255,0.15)"/>
+  <text x="300" y="170" font-size="32" fill="white" text-anchor="middle" font-weight="bold">Projeto 7</text>
+  <text x="300" y="210" font-size="18" fill="white" text-anchor="middle">Distribuição Gás</text>
+  <text x="300" y="240" font-size="14" fill="rgba(255,255,255,0.8)" text-anchor="middle">Industria</text>
+</svg>

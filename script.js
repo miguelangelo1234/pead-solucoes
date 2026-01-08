@@ -74,4 +74,37 @@ if (carousel) {
     const walk = (x - startX) * 1.2; // velocidade
     carousel.scrollLeft = scrollLeft - walk;
   });
-}
+  }
+
+  // Carousel do portfólio com scroll arrastável
+  const portfolioCarousel = document.querySelector('.portfolio-carousel');
+  if (portfolioCarousel) {
+    let isDownPortfolio = false;
+    let startXPortfolio;
+    let scrollLeftPortfolio;
+
+    portfolioCarousel.addEventListener('mousedown', e => {
+      isDownPortfolio = true;
+      portfolioCarousel.classList.add('dragging');
+      startXPortfolio = e.pageX - portfolioCarousel.offsetLeft;
+      scrollLeftPortfolio = portfolioCarousel.scrollLeft;
+    });
+
+    portfolioCarousel.addEventListener('mouseleave', () => {
+      isDownPortfolio = false;
+      portfolioCarousel.classList.remove('dragging');
+    });
+
+    portfolioCarousel.addEventListener('mouseup', () => {
+      isDownPortfolio = false;
+      portfolioCarousel.classList.remove('dragging');
+    });
+
+    portfolioCarousel.addEventListener('mousemove', e => {
+      if (!isDownPortfolio) return;
+      e.preventDefault();
+      const x = e.pageX - portfolioCarousel.offsetLeft;
+      const walk = (x - startXPortfolio) * 1.2;
+      portfolioCarousel.scrollLeft = scrollLeftPortfolio - walk;
+    });
+  }
