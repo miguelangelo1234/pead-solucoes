@@ -4,15 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PEAD Soluções em Soldas</title>
-  <link rel="icon" href="Copy_of_Soluçõe-removebg-preview.png" type="image/png">
+  <link rel="icon" href="imagens/logo.png" type="image/png">
   <link rel="stylesheet" href="stylles.css" />
+  <script src="whatsapp-form.js" defer></script>
   
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-content">
       <div class="logo">
-        <img src="Copy_of_Soluçõe-removebg-preview.png" alt="PEAD Soluções em Soldas" class="logo-img" />
+        <a href="#hero" class="logo-link">
+          <img src="imagens/logo.png" alt="PEAD Soluções em Soldas" class="logo-img">
+        </a>
         <div class="logo-text">
           <span class="logo-main">PEAD</span>
           <span class="logo-sub">Soluções em Soldas</span>
@@ -72,7 +75,7 @@
     <!-- O QUE É PEAD -->
     <section id="sobre-pead" class="section alt">
       <div class="container two-column">
-        <div>
+        <div class="animate-slide-left">
           <h2>O que é o PEAD?</h2>
           <p>
             O <strong>Polietileno de Alta Densidade (PEAD)</strong> é um material termoplástico
@@ -80,7 +83,7 @@
             como saneamento, indústria e agricultura.
           </p>
         </div>
-        <div class="section-highlight">
+        <div class="section-highlight animate-slide-right">
           <p>
             Projetos com PEAD unem <strong>durabilidade, eficiência</strong> e
             <strong>sustentabilidade</strong>, atendendo às demandas mais exigentes
@@ -99,7 +102,7 @@
         </header>
 
         <div class="beneficios-grid">
-          <article class="card">
+          <article class="card animate-slide-up animate-delay-1">
             <h3>Durabilidade e Confiabilidade</h3>
             <p>
               Materiais resistentes garantem longa vida útil, reduzindo desperdícios
@@ -107,7 +110,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card animate-slide-up animate-delay-2">
             <h3>Instalação Rápida e Econômica</h3>
             <p>
               Menor necessidade de recursos e tempo, otimizando processos
@@ -115,7 +118,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card animate-slide-up animate-delay-3">
             <h3>Desempenho Superior e Qualidade</h3>
             <p>
               A superfície lisa evita acúmulo de resíduos, aumentando a eficiência
@@ -123,7 +126,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card animate-slide-up animate-delay-4">
             <h3>Resistência Química e à Corrosão</h3>
             <p>
               Alta resistência a produtos químicos e ambientes agressivos,
@@ -131,7 +134,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card animate-slide-up animate-delay-5">
             <h3>Flexibilidade e Segurança</h3>
             <p>
               Adapta-se a diferentes terrenos e condições climáticas sem
@@ -139,7 +142,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card animate-slide-up animate-delay-1">
             <h3>Sustentabilidade e Responsabilidade Ambiental</h3>
             <p>
               100% reciclável, reduz emissões de CO₂ e impactos ambientais,
@@ -150,17 +153,33 @@
       </div>
     </section>
 
-    <!-- SETORES DE ATUAÇÃO -->
+    <!-- SETORES DE ATUAÇÃO (cards com animação lateral) -->
     <section id="setores" class="section alt">
       <div class="container">
         <header class="section-header">
           <h2>Setores de Atuação</h2>
         </header>
-        <div class="chips">
-          <span class="chip">Engenharia Civil</span>
-          <span class="chip">Indústria Química</span>
-          <span class="chip">Indústria de Água e Gás</span>
-          <span class="chip">Indústria Farmacêutica</span>
+
+        <div class="setores-grid">
+          <article class="setor-card">
+            <img src="imagens/farmaceutico.png" alt="Ícone Indústria Farmacêutica" class="setor-icon" />
+            <h3>Indústria Farmacêutica</h3>
+          </article>
+
+          <article class="setor-card">
+            <img src="imagens/civil-engineering.png" alt="Ícone Engenharia Civil" class="setor-icon" />
+            <h3>Engenharia Civil</h3>
+          </article>
+
+          <article class="setor-card">
+            <img src="imagens/valvula-de-agua.png" alt="Ícone Indústrias de Água e Gás" class="setor-icon" />
+            <h3>Indústrias de Água e Gás</h3>
+          </article>
+
+          <article class="setor-card">
+            <img src="imagens/quimica.png" alt="Ícone Indústria Química" class="setor-icon" />
+            <h3>Indústria Química</h3>
+          </article>
         </div>
       </div>
     </section>
@@ -261,26 +280,26 @@
     <!-- PORTFÓLIO / CASES -->
     <section id="portfolio" class="section alt">
       <div class="container">
-        <header class="section-header">
+        <header class="section-header animate-slide-down">
           <h2>Portfólio & Cases</h2>
           <p>Alguns exemplos de aplicações com tubulações PEAD - Deslize para o lado para ver mais.</p>
         </header>
 
         <div class="portfolio-carousel">
           <article class="portfolio-item">
-            <img src="WhatsApp Image 2026-01-06 at 22.08.16.jpeg" alt="Projeto 1: Tubulação Industrial" class="portfolio-image" />
+            <img src="imagens/projeto-1.jpeg" alt="Projeto 1: Tubulação Industrial" class="portfolio-image" />
             <h3>Tubulação Industrial</h3>
             <p>Projetos de redes internas e externas para processos industriais.</p>
           </article>
 
           <article class="portfolio-item">
-            <img src="WhatsApp Image 2026-01-06 at 22.09.47.jpeg" alt="Projeto 2: Eletrofusão" class="portfolio-image" />
+            <img src="imagens/projeto-2.jpeg" alt="Projeto 2: Eletrofsão" class="portfolio-image" />
             <h3>Eletrofusão</h3>
             <p>Conexões certificadas pelas normas nacionais e internacionais.</p>
           </article>
 
           <article class="portfolio-item">
-            <img src="WhatsApp Image 2026-01-06 at 22.09.50.jpeg" alt="Projeto 3: Termofusão" class="portfolio-image" />
+            <img src="imagens/projeto-3.jpeg" alt="Projeto 3: Termofsão" class="portfolio-image" />
             <h3>Termofusão</h3>
             <p>Aplicações em agricultura e infraestrutura rural.</p>
           </article>
@@ -333,7 +352,7 @@
     <!-- CLIENTES -->
     <section id="clientes" class="section">
       <div class="container">
-        <header class="section-header">
+        <header class="section-header animate-fade">
           <h2>Nossos Clientes</h2>
           <p>Empresas de destaque que confiam em nossas soluções PEAD.</p>
         </header>
@@ -364,27 +383,49 @@
     <!-- CONTATO / DÚVIDAS -->
     <section id="contato" class="section alt">
       <div class="container two-column">
-        <div>
+        <div class="animate-slide-left">
           <h2>Dúvidas</h2>
           <p>
             Tem um projeto em PEAD ou precisa de suporte técnico? Envie sua mensagem
             e nossa equipe retornará o mais breve possível.
           </p>
         </div>
-        <form class="form-contato">
-          <div class="form-group">
-            <label for="nome">Nome</label>
-            <input id="nome" type="text" required placeholder="Seu nome" />
+        <form id="contato-form" class="form-contato animate-slide-right">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome *</label>
+              <input id="nome" type="text" required placeholder="Seu nome completo" />
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input id="empresa" type="text" placeholder="Sua empresa (opcional)" />
+            </div>
           </div>
+          
           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input id="email" type="email" required placeholder="seuemail@empresa.com" />
+            <label for="assunto">Assunto *</label>
+            <select id="assunto" required>
+              <option value="">Selecione um assunto...</option>
+              <option value="Orçamento">Orçamento</option>
+              <option value="Suporte Técnico">Suporte Técnico</option>
+              <option value="Dúvida">Dúvida</option>
+              <option value="Parceria">Parceria</option>
+              <option value="Outro">Outro</option>
+            </select>
           </div>
+          
           <div class="form-group">
-            <label for="mensagem">Mensagem</label>
-            <textarea id="mensagem" rows="4" required placeholder="Descreva sua dúvida ou projeto"></textarea>
+            <label for="mensagem">Mensagem *</label>
+            <textarea id="mensagem" rows="5" required placeholder="Descreva sua dúvida, projeto ou solicitação..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          
+          <div id="status" class="status"></div>
+          
+          <button type="submit" class="btn btn-primary">
+            <span>📱 Enviar via WhatsApp</span>
+          </button>
+          
+          <p class="form-note">* Campos obrigatórios</p>
         </form>
       </div>
     </section>
@@ -461,7 +502,7 @@
     rel="noopener noreferrer"
     aria-label="Fale conosco pelo WhatsApp"
   >
-    <img src="0198bfcd-3741-7080-b514-2de8fb9cd4fc-removebg-preview.png" alt="WhatsApp" class="whatsapp-icon" />
+    <img src="imagens/whatsapp-button.png" alt="WhatsApp" class="whatsapp-icon" />
   </a>
   <script src="script.js" defer></script>
 </body>
