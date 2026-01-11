@@ -192,7 +192,7 @@ ul {
 }
 
 
-/* Seção destacada para produtos */
+/* Seï¿½ï¿½o destacada para produtos */
 .section-destaque {
   background: linear-gradient(135deg, rgba(25, 169, 116, 0.08) 0%, rgba(11, 37, 69, 0.04) 100%);
   padding: 4rem 0 !important;
@@ -702,6 +702,146 @@ ul {
   height: 0.45rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--green), var(--navy));
+}
+/* ESTILOS PARA A GALERIA DE PRODUTOS */
+
+.galeria-produtos {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 2px solid rgba(52, 152, 219, 0.2);
+}
+
+.galeria-titulo {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.galeria-titulo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #3498db;
+  border-radius: 2px;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.produto-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.produto-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(52, 152, 219, 0.15);
+}
+
+.produto-imagem-container {
+  background: linear-gradient(135deg, #f8fafc 0%, #e8f4fc 100%);
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.produto-imagem {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.produto-card:hover .produto-imagem {
+  transform: scale(1.1);
+}
+
+.produto-info {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.produto-info h4 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.produto-info p {
+  color: #5d6d7e;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.produto-tag {
+  display: inline-block;
+  background: rgba(52, 152, 219, 0.1);
+  color: #2980b9;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .produtos-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .galeria-titulo {
+    font-size: 1.5rem;
+  }
+  
+  .produto-imagem-container {
+    padding: 30px 20px;
+    min-height: 200px;
+  }
+  
+  .produto-imagem {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .produto-info {
+    padding: 20px;
+  }
+  
+  .produto-info h4 {
+    font-size: 1.2rem;
+  }
 }
 
 /* CARDS SERVIÃ‡OS */
