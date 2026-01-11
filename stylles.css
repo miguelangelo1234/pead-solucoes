@@ -191,7 +191,44 @@ ul {
   background: rgba(25, 169, 116, 0.06);
 }
 
-/* TOPO / NAV */
+
+/* Seção destacada para produtos */
+.section-destaque {
+  background: linear-gradient(135deg, rgba(25, 169, 116, 0.08) 0%, rgba(11, 37, 69, 0.04) 100%);
+  padding: 4rem 0 !important;
+  border-top: 3px solid var(--green);
+  border-bottom: 3px solid var(--green);
+}
+
+.section-header-destaque {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-header-destaque h2 {
+  font-size: clamp(2.2rem, 3vw, 2.8rem) !important;
+  color: var(--green-dark) !important;
+  margin-top: 0.8rem !important;
+}
+
+.section-header-destaque p {
+  font-size: 1.1rem;
+  color: var(--text-main) !important;
+  margin-top: 0.8rem !important;
+}
+
+.section-badge {
+  display: inline-block;
+  background: var(--green);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  animation: slideInDown 0.6s ease-out;
+}/* TOPO / NAV */
 .topbar {
   position: sticky;
   top: 0;
