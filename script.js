@@ -149,7 +149,7 @@ if (carousel) {
   });
   }
 
-  // Carousel do portfólio com auto-scroll imagem por imagem (slide por slide) + arraste responsivo
+  // Carousel do portfólio com auto-scroll pausado + arraste do usuário
   const portfolioCarousel = document.querySelector('.portfolio-carousel');
   if (portfolioCarousel) {
     // Clonar itens para efeito infinito
@@ -172,7 +172,8 @@ if (carousel) {
     let scrollLeftPortfolio;
     let isAutoScrolling = true;
     let autoScrollTimeoutId;
-    const autoScrollInterval = 2000; // ms entre slides (2s)
+    const autoScrollInterval = 3000; // Pausa de 3 segundos entre slides
+    const pauseDuration = 5000; // Pausa de 5 segundos quando usuário interage
 
     // Calcula a largura de um item + gap para saber quanto scrollar
     function getScrollDistance() {
@@ -208,7 +209,7 @@ if (carousel) {
         // Verifica reset após a animação
         setTimeout(() => {
           handleInfiniteScroll();
-        }, 400); // Tempo da transição smooth (reduzido)
+        }, 600);
       }
 
       // Agenda próximo slide
@@ -217,20 +218,21 @@ if (carousel) {
       }
     }
 
-    // Iniciar auto-scroll
-    autoScrollTimeoutId = setTimeout(scrollToNextItem, autoScrollInterval);
+    // Iniciar auto-scroll após 2 segundos (delay inicial)
+    autoScrollTimeoutId = setTimeout(scrollToNextItem, 2000);
 
     function pauseAutoScroll() {
       isAutoScrolling = false;
       if (autoScrollTimeoutId) clearTimeout(autoScrollTimeoutId);
     }
 
-    function resumeAutoScroll() {
+    function resumeAutoScrollWithDelay() {
       isAutoScrolling = true;
-      autoScrollTimeoutId = setTimeout(scrollToNextItem, autoScrollInterval);
+      // Pausa mais longa após interação do usuário
+      autoScrollTimeoutId = setTimeout(scrollToNextItem, pauseDuration);
     }
 
-    // Handlers de interação — APENAS CLIQUE/TOQUE pausa
+    // Handlers de interação — permite arrastar e pausa auto-scroll
     portfolioCarousel.addEventListener('pointerdown', e => {
       isDownPortfolio = true;
       pauseAutoScroll();
@@ -243,6 +245,7 @@ if (carousel) {
 
     portfolioCarousel.addEventListener('pointermove', e => {
       if (!isDownPortfolio) return;
+      e.preventDefault();
       const dx = e.clientX - startXPortfolio;
       portfolioCarousel.scrollLeft = scrollLeftPortfolio - dx;
     });
@@ -253,65 +256,30 @@ if (carousel) {
       portfolioCarousel.style.scrollBehavior = 'smooth';
       try { portfolioCarousel.releasePointerCapture(e.pointerId); } catch (err) {}
       handleInfiniteScroll();
-      resumeAutoScroll();
+      resumeAutoScrollWithDelay(); // Retoma com pausa maior
     });
 
     portfolioCarousel.addEventListener('pointercancel', () => {
       isDownPortfolio = false;
       portfolioCarousel.classList.remove('dragging');
       portfolioCarousel.style.scrollBehavior = 'smooth';
-      resumeAutoScroll();
+      resumeAutoScrollWithDelay();
     });
+
+    // Pausa auto-scroll quando usuário usa scroll manual (mouse wheel ou touch)
+    let scrollTimeout;
+    portfolioCarousel.addEventListener('scroll', () => {
+      if (!isDownPortfolio && isAutoScrolling) {
+        pauseAutoScroll();
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          resumeAutoScrollWithDelay();
+        }, 1000);
+      }
+    }, { passive: true });
   }
 
-  // Animação por setor (um por um) quando entra na viewport + arraste/scroll para visualização
-  const setoresGrid = document.querySelector('.setores-grid');
-  if (setoresGrid) {
-    const cards = Array.from(setoresGrid.querySelectorAll('.setor-card'));
-
-    // IntersectionObserver para revelar cada cartão quando entra na viewport
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { root: null, rootMargin: '0px', threshold: 0.28 });
-
-    cards.forEach(card => io.observe(card));
-
-    // Drag-to-scroll (pointer events) — mantém a capacidade do usuário arrastar para visualizar
-    let isDownSetores = false;
-    let startXSetores = 0;
-    let scrollLeftSetores = 0;
-
-    setoresGrid.addEventListener('pointerdown', e => {
-      isDownSetores = true;
-      setoresGrid.classList.add('dragging');
-      setoresGrid.setPointerCapture(e.pointerId);
-      startXSetores = e.clientX;
-      scrollLeftSetores = setoresGrid.scrollLeft;
-    });
-
-    setoresGrid.addEventListener('pointermove', e => {
-      if (!isDownSetores) return;
-      e.preventDefault();
-      const dx = e.clientX - startXSetores;
-      setoresGrid.scrollLeft = scrollLeftSetores - dx;
-    });
-
-    setoresGrid.addEventListener('pointerup', e => {
-      isDownSetores = false;
-      setoresGrid.classList.remove('dragging');
-      try { setoresGrid.releasePointerCapture(e.pointerId); } catch (err) {}
-    });
-
-    setoresGrid.addEventListener('pointercancel', () => {
-      isDownSetores = false;
-      setoresGrid.classList.remove('dragging');
-    });
-
+  // Setores agora são estáticos (grid fixo) - código de animação removido
     // Suporte a roda do mouse para navegar horizontalmente
     setoresGrid.addEventListener('wheel', e => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {

@@ -542,72 +542,29 @@ ul {
   gap: 0.75rem;
 }
 
-/* SETORES - cards responsivos com auto-scroll lateral e intera\u00e7\u00e3o (arrastar/pausar) */
+/* SETORES - grid fixo sem animações e sem rolagem */
 .setores-grid {
-  display: flex;
-  gap: clamp(0.6rem, 2vw, 1.4rem);
-  justify-content: flex-start;
-  align-items: stretch;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.6rem);
   margin-top: 1.2rem;
-  padding-bottom: 0.6rem;
-}
-
-.setores-grid::-webkit-scrollbar {
-  height: 8px;
-}
-
-.setores-grid::-webkit-scrollbar-thumb {
-  background: rgba(11, 37, 69, 0.12);
-  border-radius: 8px;
 }
 
 .setor-card {
   background: linear-gradient(180deg, #22c43a 0%, var(--green) 100%);
   color: #fff;
-  flex: 1 1 clamp(160px, 22vw, 280px);
   min-height: 180px;
   padding: clamp(0.9rem, 2.5vw, 1.3rem);
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 8px 24px rgba(11, 37, 69, 0.10);
-  transition: transform 0.45s cubic-bezier(.2,.9,.2,1), opacity 0.38s ease, box-shadow 0.28s ease;
-  cursor: grab;
+  transition: transform 0.3s ease, box-shadow 0.28s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  /* Mostrar inicialmente, depois animar quando observado */
-  animation: slideInSetor 0.6s cubic-bezier(.2,.9,.2,1) forwards;
 }
-
-@keyframes slideInSetor {
-  from {
-    transform: translateX(-22px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.setor-card.is-visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* Staggered delays so cards appear one-by-one */
-.setores-grid .setor-card:nth-child(1) { animation-delay: 0.1s; }
-.setores-grid .setor-card:nth-child(2) { animation-delay: 0.25s; }
-.setores-grid .setor-card:nth-child(3) { animation-delay: 0.40s; }
-.setores-grid .setor-card:nth-child(4) { animation-delay: 0.55s; }
-
-.setor-card:active { cursor: grabbing; }
 
 .setor-card:hover {
   transform: translateY(-6px);
@@ -624,6 +581,11 @@ ul {
 }
 
 @media (max-width: 1024px) {
+  .setores-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+  }
+  
   .setor-card {
     min-height: 160px;
     padding: 0.85rem;
@@ -636,8 +598,12 @@ ul {
 }
 
 @media (max-width: 768px) {
+  .setores-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
   .setor-card {
-    flex: 1 1 clamp(120px, 35vw, 200px);
     min-height: 150px;
     padding: 0.8rem;
   }
@@ -654,8 +620,12 @@ ul {
 }
 
 @media (max-width: 480px) {
+  .setores-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
   .setor-card {
-    flex: 1 1 100%;
     min-height: 140px;
     padding: 0.75rem;
   }
