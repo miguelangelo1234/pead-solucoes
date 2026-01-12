@@ -1142,47 +1142,209 @@ ul {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* CLIENTES */
-.clientes-logos {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  align-items: center;
-  justify-items: center;
+
+.clientes-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
-@media (max-width: 768px) {
-  .clientes-logos {
+.clientes-container {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.clientes-row {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
+    gap: 2.5rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.cliente-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(11, 37, 69, 0.08);
+    border: 1px solid rgba(11, 37, 69, 0.1);
+}
+
+.cliente-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(11, 37, 69, 0.15);
+    border-color: var(--green);
+}
+
+.cliente-logo-wrapper {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
 }
 
 .cliente-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--white);
-  border-radius: var(--radius-md);
-  padding: 1.5rem 1rem;
-  border: 1px solid rgba(209, 213, 219, 0.8);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
-  min-height: 140px;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
 }
 
-.cliente-logo:hover {
-  transform: translateY(-3px);
-  border-color: var(--green);
-  box-shadow: 0 12px 32px rgba(25, 169, 116, 0.15);
+.cliente-item:hover .cliente-logo {
+    transform: scale(1.05);
 }
 
-.cliente-logo img {
-  max-width: 100%;
-  max-height: 100px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.cliente-nome {
+    font-size: 1.1rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin-top: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(11, 37, 69, 0.1);
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .clientes-container {
+        max-width: 700px;
+        gap: 2rem;
+    }
+    
+    .clientes-row {
+        gap: 1.5rem;
+    }
+    
+    .cliente-item {
+        padding: 1.25rem;
+    }
+    
+    .cliente-logo-wrapper {
+        height: 70px;
+    }
+    
+    .cliente-nome {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .clientes-container {
+        max-width: 600px;
+        gap: 1.5rem;
+    }
+    
+    .clientes-row {
+        gap: 1rem;
+    }
+    
+    .cliente-item {
+        padding: 1rem;
+    }
+    
+    .cliente-logo-wrapper {
+        height: 60px;
+    }
+    
+    .cliente-nome {
+        font-size: 0.95rem;
+        padding-top: 0.6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .clientes-container {
+        max-width: 500px;
+        gap: 1.5rem;
+    }
+    
+    .clientes-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .cliente-item {
+        padding: 0.8rem;
+    }
+    
+    .cliente-logo-wrapper {
+        height: 50px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .cliente-nome {
+        font-size: 0.85rem;
+        padding-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .clientes-container {
+        max-width: 100%;
+        gap: 1.2rem;
+    }
+    
+    .clientes-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+    }
+    
+    .cliente-item {
+        padding: 0.7rem;
+    }
+    
+    .cliente-logo-wrapper {
+        height: 45px;
+    }
+    
+    .cliente-logo {
+        max-height: 40px;
+    }
+    
+    .cliente-nome {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+}
+
+/* Animações */
+.cliente-item {
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Primeira linha */
+.clientes-row:nth-child(1) .cliente-item:nth-child(1) { animation-delay: 0.1s; }
+.clientes-row:nth-child(1) .cliente-item:nth-child(2) { animation-delay: 0.2s; }
+.clientes-row:nth-child(1) .cliente-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Segunda linha */
+.clientes-row:nth-child(2) .cliente-item:nth-child(1) { animation-delay: 0.4s; }
+.clientes-row:nth-child(2) .cliente-item:nth-child(2) { animation-delay: 0.5s; }
+.clientes-row:nth-child(2) .cliente-item:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* FORM CONTATO */
