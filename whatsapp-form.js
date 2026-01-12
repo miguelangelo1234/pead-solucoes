@@ -1,6 +1,6 @@
 // ==== CONFIGURAÇÃO DO WHATSAPP ====
 // PEAD Soluções em Soldas
-const WHATSAPP_NUMBER = "5512992236923"; // Formato: 55 + DDD + número sem formatação
+const WHATSAPP_NUMBER = "5519998398666"; // Formato: 55 + DDD + número sem formatação
 // ====================================
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         // Monta a mensagem para WhatsApp com formatação
-        let mensagemWhatsApp = `*Novo Contato via PEAD Soluções*\n\n`;
+        let mensagemWhatsApp = `*Contato via PEAD Soluções*\n\n`;
         mensagemWhatsApp += `👤 *Nome:* ${nome}\n`;
         
         if (empresa) {

@@ -6,8 +6,9 @@
   <title>PEAD Soluções em Soldas</title>
   <link rel="icon" href="imagens/logo.png" type="image/png">
   <link rel="stylesheet" href="stylles.css" />
+  <!-- Font Awesome para ícones do portfólio -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="whatsapp-form.js" defer></script>
-  
 </head>
 <body>
   <header class="topbar">
@@ -33,7 +34,7 @@
           <li><a href="#quem-somos">Quem Somos</a></li>
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#produtos">Produtos</a></li>
-          <li><a href="#cases">Cases</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
           <li><a href="#clientes">Clientes</a></li>
           <li><a href="#contato">Dúvidas</a></li>
         </ul>
@@ -157,7 +158,7 @@
       </div>
     </section>
 
-    <!-- SETORES DE ATUAÇÃO (cards com animação lateral) -->
+    <!-- SETORES DE ATUAÇÃO -->
     <section id="setores" class="section alt section-destaque">
       <div class="container">
         <header class="section-header section-header-destaque">
@@ -212,8 +213,53 @@
       </div>
     </section>
 
+    <!-- PORTFÓLIO -->
+    <section id="portfolio" class="section alt section-destaque portfolio-section">
+      <div class="container">
+        <header class="section-header section-header-destaque">
+          <div class="section-badge">PORTFÓLIO</div>
+          <p>Confira alguns dos nossos trabalhos realizados</p>
+        </header>
+
+        <div class="portfolio-compacto">
+          <div class="portfolio-slider">
+            <div class="photo-container">
+              <div class="photo-wrapper">
+                <img id="compact-photo" src="" alt="Foto do portfólio" class="active">
+              </div>
+              
+              <div class="photo-info">
+                <h3 id="compact-title">Projeto em Execução</h3>
+                <p id="compact-description">Solda de tubulação PEAD para sistema de distribuição</p>
+              </div>
+              
+              <div class="photo-nav">
+                <button id="compact-prev" class="nav-btn compact" aria-label="Foto anterior">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="photo-counter">
+                  <span id="compact-current">1</span> / <span id="compact-total">10</span>
+                </div>
+                
+                <button id="compact-next" class="nav-btn compact" aria-label="Próxima foto">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              
+              <div class="keyboard-hint">
+                <small><i class="fas fa-keyboard"></i> Use as setas do teclado para navegar</small>
+              </div>
+            </div>
+            
+            <div class="thumbnails-compact" id="compact-thumbnails"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- NOSSOS SERVIÇOS -->
-    <section id="servicos" class="section alt section-destaque">
+    <section id="servicos" class="section section-destaque">
       <div class="container">
         <header class="section-header section-header-destaque">
           <div class="section-badge">SERVIÇOS</div>
@@ -249,206 +295,92 @@
     </section>
 
     <!-- NOSSOS PRODUTOS -->
-<section id="produtos" class="section section-destaque">
-  <div class="container">
-    <header class="section-header section-header-destaque">
-      <h2>Nossos Produtos</h2>
-      <p>Soluções completas para infraestrutura e saneamento.</p>
-    </header>
-
-    <div class="two-column">
-      <div>
-        <ul class="list">
-          <li>
-            Conexões de eletrofusão de fabricantes renomados, certificadas pelas normas
-            nacionais e internacionais (ABNT NBR 14462-3/4, ABNT NBR 15583, DVGW).
-          </li>
-          <li>
-            Máquinas de eletrofusão e termofusão para diferentes diâmetros e aplicações.
-          </li>
-          <li>
-            Tubos, ferramentas e acessórios para distribuição de gás, água e esgoto.
-          </li>
-          <li>
-            Materiais de alta qualidade, garantindo durabilidade, segurança e eficiência.
-          </li>
-        </ul>
-      </div>
-      <div class="section-highlight">
-        <p>
-          Projetos completos para redes de <strong>gás, água e esgoto</strong>,
-          com foco em desempenho e confiabilidade.
-        </p>
-      </div>
-    </div>
-
-    <!-- GALERIA DE IMAGENS COM FUNDO TRANSPARENTE -->
-    <div class="galeria-produtos">
-      <h3 class="galeria-titulo">Nossas Soluções em Destaque</h3>
-      <div class="produtos-grid">
-        
-        <!-- Produto 1 -->
-        <div class="produto-card">
-          <div class="produto-imagem-container">
-            <img 
-              src="imagens/image-removebg-preview (2).png" 
-              alt="Conexões de Eletrofusão" 
-              class="produto-imagem"
-              loading="lazy"
-            >
-          </div>
-          <div class="produto-info">
-            <h4>Conexões de Eletrofusão</h4>
-            <p>Conexões certificadas por normas nacionais e internacionais para máxima segurança.</p>
-            <span class="produto-tag">ABNT NBR 14462-3/4</span>
-          </div>
-        </div>
-
-        <!-- Produto 2 -->
-        <div class="produto-card">
-          <div class="produto-imagem-container">
-            <img 
-              src="imagens/termofuseo-removebg-preview.png" 
-              alt="Máquinas de Eletrofusão" 
-              class="produto-imagem"
-              loading="lazy"
-            >
-          </div>
-          <div class="produto-info">
-            <h4>Máquinas de Eletrofusão</h4>
-            <p>Equipamentos para diferentes diâmetros e aplicações em redes de infraestrutura.</p>
-            <span class="produto-tag">Vários Diâmetros</span>
-          </div>
-        </div>
-
-        <!-- Produto 3 -->
-        <div class="produto-card">
-          <div class="produto-imagem-container">
-            <img 
-              src="imagens/image-removebg-preview (1).png" 
-              alt="Tubos e Acessórios" 
-              class="produto-imagem"
-              loading="lazy"
-            >
-          </div>
-          <div class="produto-info">
-            <h4>Tubos e Acessórios</h4>
-            <p>Materiais de alta qualidade para distribuição de gás, água e esgoto.</p>
-            <span class="produto-tag">Alta Durabilidade</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <!-- FIM DA GALERIA -->
-
-  </div>
-</section>
-
-    <!-- PORTFÓLIO / CASES -->
-    <section id="portfolio" class="section alt section-destaque">
+    <section id="produtos" class="section section-destaque">
       <div class="container">
-        <header class="section-header section-header-destaque animate-slide-down">
-          <div class="section-badge">PORTFÓLIO</div>
-          <h2>Portfólio & Cases</h2>
-          <p>Alguns exemplos de aplicações com tubulações PEAD - Deslize para o lado para ver mais.</p>
+        <header class="section-header section-header-destaque">
+          <h2>Nossos Produtos</h2>
+          <p>Soluções completas para infraestrutura e saneamento.</p>
         </header>
 
-        <div class="portfolio-wrapper">
-          
-          <div class="portfolio-carousel">
-            <article class="portfolio-item">
-            <img src="imagens/projeto-1.jpeg" alt="Projeto 1: Tubulação Industrial" class="portfolio-image" />
-            <h3>Tubulação Industrial</h3>
-            <p>Projetos de redes internas e externas para processos industriais.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/projeto-2.jpeg" alt="Projeto 2: Eletrofsão" class="portfolio-image" />
-            <h3>Eletrofusão</h3>
-            <p>Conexões certificadas pelas normas nacionais e internacionais.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/projeto-3.jpeg" alt="Projeto 3: Termofsão" class="portfolio-image" />
-            <h3>Termofusão</h3>
-            <p>Aplicações em agricultura e infraestrutura rural.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/trabalho-4.svg" alt="Projeto 4: Conexões" class="portfolio-image" />
-            <h3>Conexões PEAD</h3>
-            <p>Sistemas integrados para infraestrutura de qualidade.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/trabalho-5.svg" alt="Projeto 5" class="portfolio-image" />
-            <h3>Distribuição de Água</h3>
-            <p>Redes de abastecimento com alta confiabilidade.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/trabalho-6.svg" alt="Projeto 6: Sistema Integrado" class="portfolio-image" />
-            <h3>Sistema Integrado</h3>
-            <p>Soluções completas para abastecimento de água.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/trabalho-7.svg" alt="Projeto 7: Distribuição" class="portfolio-image" />
-            <h3>Distribuição de Gás</h3>
-            <p>Aplicações industriais com segurança garantida.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/trabalho-8.svg" alt="Projeto 8: Tratamento" class="portfolio-image" />
-            <h3>Tratamento de Água</h3>
-            <p>Estações de tratamento com tecnologia PEAD.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/trabalho-9.svg" alt="Projeto 9: Esgoto" class="portfolio-image" />
-            <h3>Redes de Esgoto</h3>
-            <p>Sistemas de saneamento com durabilidade comprovada.</p>
-          </article>
-
-          <article class="portfolio-item">
-            <img src="imagens/trabalho-10.svg" alt="Projeto 10: Multiplos" class="portfolio-image" />
-            <h3>Aplicações Diversas</h3>
-            <p>Soluções customizadas para múltiplos segmentos.</p>
-          </article>
+        <div class="two-column">
+          <div>
+            <ul class="list">
+              <li>
+                Conexões de eletrofusão de fabricantes renomados, certificadas pelas normas
+                nacionais e internacionais (ABNT NBR 14462-3/4, ABNT NBR 15583, DVGW).
+              </li>
+              <li>
+                Máquinas de eletrofusão e termofusão para diferentes diâmetros e aplicações.
+              </li>
+              <li>
+                Tubos, ferramentas e acessórios para distribuição de gás, água e esgoto.
+              </li>
+              <li>
+                Materiais de alta qualidade, garantindo durabilidade, segurança e eficiência.
+              </li>
+            </ul>
           </div>
-
+          <div class="section-highlight">
+            <p>
+              Projetos completos para redes de <strong>gás, água e esgoto</strong>,
+              com foco em desempenho e confiabilidade.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CLIENTES -->
-    <section id="clientes" class="section section-destaque">
-      <div class="container">
-        <header class="section-header section-header-destaque animate-fade">
-          <div class="section-badge">CLIENTES</div>
-          <h2>Nossos Clientes</h2>
-          <p>Empresas de destaque que confiam em nossas soluções PEAD.</p>
-        </header>
+        <!-- GALERIA DE IMAGENS COM FUNDO TRANSPARENTE -->
+        <div class="galeria-produtos">
+          <h3 class="galeria-titulo">Nossas Soluções em Destaque</h3>
+          <div class="produtos-grid">
+            
+            <!-- Produto 1 -->
+            <div class="produto-card">
+              <div class="produto-imagem-container">
+                <img 
+                  src="imagens/image-removebg-preview (2).png" 
+                  alt="Conexões de Eletrofusão" 
+                  class="produto-imagem"
+                  loading="lazy"
+                >
+              </div>
+              <div class="produto-info">
+                <h4>Conexões de Eletrofusão</h4>
+                <p>Conexões certificadas por normas nacionais e internacionais para máxima segurança.</p>
+              </div>
+            </div>
 
-        <div class="clientes-logos">
-          <div class="cliente-logo">
-            <img src="https://s3-symbol-logo.tradingview.com/brasileiro-petrobras--600.png" alt="Petrobras" />
-          </div>
-          <div class="cliente-logo">
-            <img src="https://media.licdn.com/dms/image/v2/D4E0BAQGnnUmPheGDbA/company-logo_200_200/company-logo_200_200/0/1738441837655/zeg_logo?e=2147483647&v=beta&t=DlPsYuwA7pDVMmnY2bjGUJynatc99qgIsKxCsIXl1to" alt="ZEG" />
-          </div>
-          <div class="cliente-logo">
-            <img src="https://images.seeklogo.com/logo-png/14/1/vale-logo-png_seeklogo-147112.png" alt="Vale" />
-          </div>
-          <div class="cliente-logo">
-            <img src="https://www.proleit.com.br/fileadmin/user_upload/english/content/01_about_us/references/referenz_pedra.png" alt="Usina da Pedra" />
-          </div>
-          <div class="cliente-logo">
-            <img src="https://www.tecnal.ind.br/uploads/clientes/669457-477646-14052024171517.jpg" alt="Anhambi" />
-          </div>
-          <div class="cliente-logo">
-            <img src="https://logospng.org/download/klabin/logo-klabin-256.png" alt="Klabin" />
+            <!-- Produto 2 -->
+            <div class="produto-card">
+              <div class="produto-imagem-container">
+                <img 
+                  src="imagens/termofuseo-removebg-preview.png" 
+                  alt="Máquinas de Eletrofusão" 
+                  class="produto-imagem"
+                  loading="lazy"
+                >
+              </div>
+              <div class="produto-info">
+                <h4>Máquinas de Eletrofusão e termofução</h4>
+                <p>Equipamentos para diferentes diâmetros e aplicações em redes de infraestrutura.</p>
+              </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="produto-card">
+              <div class="produto-imagem-container">
+                <img 
+                  src="imagens/image-removebg-preview (1).png" 
+                  alt="Tubos e Acessórios" 
+                  class="produto-imagem"
+                  loading="lazy"
+                >
+              </div>
+              <div class="produto-info">
+                <h4>Tubos e Acessórios</h4>
+                <p>Materiais de alta qualidade para distribuição de gás, água e esgoto.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -532,18 +464,17 @@
           <h3>Contato</h3>
           <ul class="footer-links">
             <li>
-              <a href="tel:+5512992236923">
-                <strong>Telefone:</strong> (12) 99223-6923
+              <a href="tel:+5519998398666">
               </a>
             </li>
             <li>
-              <a href="mailto:contato@pead.com.br">
-                <strong>Email:</strong> contato@pead.com.br
+              <a href="mailto:soldasemepead@gmail.com">
+                <strong>Email:</strong> soldasempead@gmail.com
               </a>
             </li>
             <li>
-              <a href="https://wa.me/5512992236923" target="_blank" rel="noopener noreferrer">
-                <strong>WhatsApp:</strong> (12) 99223-6923
+              <a href="https://wa.me/5519998398666" target="_blank" rel="noopener noreferrer">
+                <strong>WhatsApp:</strong> (19) 99839-8666
               </a>
             </li>
           </ul>
@@ -560,28 +491,19 @@
             <li><a href="#contato">Contato</a></li>
           </ul>
         </div>
-
-        <!-- Redes Sociais -->
-        <div class="footer-section">
-          <h3>Redes Sociais</h3>
-          <ul class="footer-links">
-            <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          </ul>
-        </div>
       </div>
 
       <!-- Copyright -->
       <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> PEAD Soluções em Soldas. Todos os direitos reservados.</p>
+        <p><strong>&copy; <span id="year"></span> PEAD Soluções em Soldas. Todos os direitos reservados. Desenvolvido por Miguel Pellatiero - <strong>WhatsApp:</strong>: <a href="https://wa.me/5512992236923" target="_blank" rel="noopener noreferrer">(12) 99223-6923</a></strong></p>
         <p class="footer-small">Infraestrutura e saneamento com qualidade, segurança e responsabilidade ambiental.</p>
       </div>
     </div>
   </footer>
 
-    <!-- Botão flutuante de WhatsApp -->
+  <!-- Botão flutuante de WhatsApp -->
   <a
-    href="https://wa.me/5512992236923"
+    href="https://wa.me/5519998398666"
     class="whatsapp-button"
     target="_blank"
     rel="noopener noreferrer"
@@ -589,6 +511,363 @@
   >
     <img src="imagens/whatsapp-button.png" alt="WhatsApp" class="whatsapp-icon" />
   </a>
+  
   <script src="script.js" defer></script>
+  
+  <!-- JavaScript do Portfólio -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dados do portfólio COM IMAGENS LOCAIS
+      // SUBSTITUA os nomes dos arquivos pelos nomes reais das suas fotos!
+      const portfolioCompact = [
+        {
+          id: 1,
+          title: "Solda de Tubulação PEAD",
+          description: "Instalação de sistema de distribuição de água",
+          url: "imagens/portfolio/foto1.jpeg"  // ← SUA FOTO 1
+        },
+        {
+          id: 2,
+          title: "Projeto de Saneamento",
+          description: "Rede de esgoto em PEAD para obra pública",
+          url: "imagens/portfolio/foto2.jpeg"  // ← SUA FOTO 2
+        },
+        {
+          id: 3,
+          title: "Treinamento Técnico",
+          description: "Capacitação em termofusão para equipe",
+          url: "imagens/portfolio/foto3.jpeg"  // ← SUA FOTO 3
+        },
+        {
+          id: 4,
+          title: "Sistema Industrial",
+          description: "Tubulação PEAD para indústria química",
+          url: "imagens/portfolio/foto4.jpeg"  // ← SUA FOTO 4
+        },
+        {
+          id: 5,
+          title: "Infraestrutura Rural",
+          description: "Projeto de irrigação com PEAD",
+          url: "imagens/portfolio/foto5.jpeg"  // ← SUA FOTO 5
+        },
+        {
+          id: 6,
+          title: "Manutenção Preventiva",
+          description: "Inspeção e manutenção de rede existente",
+          url: "imagens/portfolio/foto6.jpeg"  // ← SUA FOTO 6
+        },
+        {
+          id: 7,
+          title: "Instalação de Conexões",
+          description: "Eletrofusão em diâmetro DN 200",
+          url: "imagens/portfolio/foto7.jpeg"  // ← SUA FOTO 7
+        },
+        {
+          id: 8,
+          title: "Obra de Gás Natural",
+          description: "Rede de distribuição de gás com PEAD",
+          url: "imagens/portfolio/foto8.jpeg"  // ← SUA FOTO 8
+        },
+        {
+          id: 9,
+          title: "Sistema de Drenagem",
+          description: "Projeto sustentável para controle de águas pluviais",
+          url: "imagens/portfolio/foto9.jpeg"  // ← SUA FOTO 9
+        },
+        {
+          id: 10,
+          title: "Certificação de Qualidade",
+          description: "Testes e certificações em obra finalizada",
+          url: "imagens/portfolio/foto10.jpeg"  // ← SUA FOTO 10
+        },
+        {
+          id: 11,
+          url: "imagens/portfolio/foto11.jpeg"  // ← SUA FOTO 11
+        }
+      ];
+
+      // Verifica se as imagens existem
+      function checkImageExists(url, callback) {
+        const img = new Image();
+        img.onload = function() { callback(true); };
+        img.onerror = function() { callback(false); };
+        img.src = url;
+      }
+
+      // Elementos do DOM
+      const currentPhoto = document.getElementById('compact-photo');
+      const photoTitle = document.getElementById('compact-title');
+      const photoDescription = document.getElementById('compact-description');
+      const currentNumber = document.getElementById('compact-current');
+      const totalPhotos = document.getElementById('compact-total');
+      const prevBtn = document.getElementById('compact-prev');
+      const nextBtn = document.getElementById('compact-next');
+      const thumbnailsContainer = document.getElementById('compact-thumbnails');
+
+      // Estado
+      let currentIndex = 0;
+      const total = portfolioCompact.length;
+      let isTransitioning = false;
+      let imagesLoaded = 0;
+
+      // Inicialização
+      function initCompactPortfolio() {
+        totalPhotos.textContent = total;
+        
+        // Verificar se as imagens existem antes de carregar
+        preloadImages();
+      }
+
+      // Pré-carregar imagens
+      function preloadImages() {
+        imagesLoaded = 0;
+        
+        portfolioCompact.forEach((photo, index) => {
+          checkImageExists(photo.url, function(exists) {
+            if (!exists) {
+              console.warn(`Imagem não encontrada: ${photo.url}`);
+              // Usar imagem de fallback se a imagem não existir
+              portfolioCompact[index].url = getFallbackImage();
+            }
+            imagesLoaded++;
+            
+            if (imagesLoaded === total) {
+              // Todas as imagens verificadas, iniciar o portfólio
+              loadThumbnails();
+              loadPhoto(currentIndex);
+              setupEventListeners();
+            }
+          });
+        });
+      }
+
+      // Imagem de fallback se a imagem não existir
+      function getFallbackImage() {
+        // Retorna uma imagem genérica ou uma URL online
+        return "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+      }
+
+      // Carregar miniaturas
+      function loadThumbnails() {
+        thumbnailsContainer.innerHTML = '';
+        
+        portfolioCompact.forEach((photo, index) => {
+          const thumbnail = document.createElement('div');
+          thumbnail.className = 'thumbnail-compact';
+          if (index === currentIndex) thumbnail.classList.add('active');
+          
+          const img = document.createElement('img');
+          img.src = photo.url;
+          img.alt = `Thumb: ${photo.title}`;
+          img.loading = 'lazy';
+          
+          // Adicionar tratamento de erro para miniaturas
+          img.onerror = function() {
+            this.src = getFallbackImage();
+          };
+          
+          thumbnail.appendChild(img);
+          thumbnailsContainer.appendChild(thumbnail);
+          
+          thumbnail.addEventListener('click', () => {
+            if (isTransitioning || index === currentIndex) return;
+            currentIndex = index;
+            loadPhoto(currentIndex);
+            updateActiveThumbnail();
+          });
+        });
+      }
+
+      // Carregar foto com transição
+      function loadPhoto(index) {
+        if (isTransitioning) return;
+        
+        const photo = portfolioCompact[index];
+        
+        // Iniciar transição
+        isTransitioning = true;
+        currentPhoto.style.opacity = '0';
+        currentPhoto.style.transform = 'scale(0.98)';
+        
+        setTimeout(() => {
+          // Adicionar tratamento de erro para a imagem principal
+          currentPhoto.onerror = function() {
+            this.src = getFallbackImage();
+            photoTitle.textContent = "Imagem não disponível";
+            photoDescription.textContent = "Esta imagem não pôde ser carregada";
+          };
+          
+          currentPhoto.src = photo.url;
+          currentPhoto.alt = photo.title;
+          photoTitle.textContent = photo.title;
+          photoDescription.textContent = photo.description;
+          currentNumber.textContent = index + 1;
+          
+          currentPhoto.style.opacity = '1';
+          currentPhoto.style.transform = 'scale(1)';
+          currentPhoto.style.transition = 'all 0.4s ease';
+          
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 400);
+          
+          updateActiveThumbnail();
+        }, 200);
+      }
+
+      // Atualizar miniatura ativa
+      function updateActiveThumbnail() {
+        document.querySelectorAll('.thumbnail-compact').forEach((thumb, index) => {
+          thumb.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      // Navegação
+      function nextPhoto() {
+        if (isTransitioning) return;
+        currentIndex = (currentIndex + 1) % total;
+        loadPhoto(currentIndex);
+      }
+
+      function prevPhoto() {
+        if (isTransitioning) return;
+        currentIndex = (currentIndex - 1 + total) % total;
+        loadPhoto(currentIndex);
+      }
+
+      // Event Listeners
+      function setupEventListeners() {
+        prevBtn.addEventListener('click', prevPhoto);
+        nextBtn.addEventListener('click', nextPhoto);
+        
+        // Teclado
+        document.addEventListener('keydown', (e) => {
+          // Só funciona se o portfólio estiver visível na tela
+          const portfolioRect = document.querySelector('.portfolio-compacto').getBoundingClientRect();
+          const isVisible = portfolioRect.top < window.innerHeight && portfolioRect.bottom >= 0;
+          
+          if (!isVisible || isTransitioning) return;
+          
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevPhoto();
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextPhoto();
+          }
+        });
+        
+        // Toque para mobile
+        let touchStartX = 0;
+        const photoWrapper = document.querySelector('.photo-wrapper');
+        
+        photoWrapper.addEventListener('touchstart', (e) => {
+          if (isTransitioning) return;
+          touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        photoWrapper.addEventListener('touchend', (e) => {
+          if (isTransitioning) return;
+          
+          const touchEndX = e.changedTouches[0].clientX;
+          const diff = touchStartX - touchEndX;
+          const threshold = 50;
+          
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              nextPhoto();
+            } else {
+              prevPhoto();
+            }
+          }
+        }, { passive: true });
+      }
+      // Adicione estas funções ao seu script.js ou no final do HTML
+
+// Função para detectar proporção da imagem
+function detectImageOrientation(imgElement, callback) {
+    const img = new Image();
+    img.onload = function() {
+        const isLandscape = this.width > this.height;
+        callback(isLandscape ? 'landscape' : 'portrait');
+    };
+    img.onerror = function() {
+        callback('landscape'); // Padrão
+    };
+    img.src = imgElement.src || imgElement.getAttribute('src');
+}
+
+// Modifique a função loadPhoto para:
+function loadPhoto(index) {
+    if (isTransitioning) return;
+    
+    const photo = portfolioCompact[index];
+    
+    // Iniciar transição
+    isTransitioning = true;
+    currentPhoto.style.opacity = '0';
+    
+    // Resetar classes de orientação
+    const photoWrapper = document.querySelector('.photo-wrapper');
+    photoWrapper.classList.remove('landscape', 'portrait');
+    
+    // Carregar a imagem
+    const tempImg = new Image();
+    tempImg.onload = function() {
+        // Determinar se é paisagem ou retrato
+        const isLandscape = this.width > this.height;
+        
+        setTimeout(() => {
+            currentPhoto.src = photo.url;
+            currentPhoto.alt = photo.title;
+            photoTitle.textContent = photo.title;
+            photoDescription.textContent = photo.description;
+            currentNumber.textContent = index + 1;
+            
+            // Aplicar classe baseada na orientação
+            if (isLandscape) {
+                photoWrapper.classList.add('landscape');
+            } else {
+                photoWrapper.classList.add('portrait');
+            }
+            
+            currentPhoto.style.opacity = '1';
+            currentPhoto.style.transition = 'opacity 0.4s ease';
+            
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 400);
+            
+            updateActiveThumbnail();
+        }, 200);
+    };
+    
+    tempImg.onerror = function() {
+        // Se der erro, usar fallback
+        setTimeout(() => {
+            currentPhoto.src = getFallbackImage();
+            currentPhoto.alt = "Imagem não disponível";
+            photoTitle.textContent = photo.title;
+            photoDescription.textContent = photo.description;
+            currentNumber.textContent = index + 1;
+            
+            currentPhoto.style.opacity = '1';
+            photoWrapper.classList.add('landscape'); // Padrão
+            
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 400);
+            
+            updateActiveThumbnail();
+        }, 200);
+    };
+    
+    tempImg.src = photo.url;
+}
+
+      // Inicializar
+      initCompactPortfolio();
+    });
+  </script>
 </body>
 </html>

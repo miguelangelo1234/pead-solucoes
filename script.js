@@ -116,175 +116,257 @@ if (form) {
     }
   });
 }
-// Carrossel arrastável com o mouse
-const carousel = document.getElementById('portfolio-carousel');
-if (carousel) {
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+document.addEventListener('DOMContentLoaded', function() {
+    // Dados do portfólio compacto - Imagens dos trabalhos
+    const portfolioCompact = [
+        {
+            id: 1,
+            title: "Solda de Tubulações PEAD",
+            description: "Processo de solda em tubulações de alta densidade",
+            url: "imagens/trabalho-1.svg"
+        },
+        {
+            id: 2,
+            title: "Equipamentos de Termofusão",
+            description: "Máquinas especializadas para fusão de tubos",
+            url: "imagens/trabalho-2.svg"
+        },
+        {
+            id: 3,
+            title: "Instalação em Engenharia Civil",
+            description: "Aplicação em projetos de infraestrutura",
+            url: "imagens/trabalho-3.svg"
+        },
+        {
+            id: 4,
+            title: "Conexões de Eletrofusão",
+            description: "Conexões certificadas para máxima segurança",
+            url: "imagens/trabalho-4.svg"
+        },
+        {
+            id: 5,
+            title: "Treinamentos Técnicos",
+            description: "Capacitação de equipes em solda PEAD",
+            url: "imagens/trabalho-5.svg"
+        },
+        {
+            id: 6,
+            title: "Projetos de Saneamento",
+            description: "Soluções para redes de água e esgoto",
+            url: "imagens/trabalho-6.svg"
+        },
+        {
+            id: 7,
+            title: "Indústria Farmacêutica",
+            description: "Aplicações em ambientes controlados",
+            url: "imagens/trabalho-7.svg"
+        },
+        {
+            id: 8,
+            title: "Distribuição de Gás",
+            description: "Sistemas seguros para gás natural",
+            url: "imagens/trabalho-8.svg"
+        },
+        {
+            id: 9,
+            title: "Indústria Química",
+            description: "Resistência química em processos industriais",
+            url: "imagens/trabalho-9.svg"
+        },
+        {
+            id: 10,
+            title: "Suporte Técnico Especializado",
+            description: "Acompanhamento completo de projetos",
+            url: "imagens/trabalho-10.svg"
+        }
+    ];
 
-  carousel.addEventListener('mousedown', e => {
-    isDown = true;
-    carousel.classList.add('dragging');
-    startX = e.pageX - carousel.offsetLeft;
-    scrollLeft = carousel.scrollLeft;
-  });
+    // Elementos do DOM
+    const currentPhoto = document.getElementById('compact-photo');
+    const photoTitle = document.getElementById('compact-title');
+    const photoDescription = document.getElementById('compact-description');
+    const currentNumber = document.getElementById('compact-current');
+    const totalPhotos = document.getElementById('compact-total');
+    const prevBtn = document.getElementById('compact-prev');
+    const nextBtn = document.getElementById('compact-next');
+    const thumbnailsContainer = document.getElementById('compact-thumbnails');
 
-  carousel.addEventListener('mouseleave', () => {
-    isDown = false;
-    carousel.classList.remove('dragging');
-  });
+    // Estado
+    let currentIndex = 0;
+    const total = portfolioCompact.length;
+    let isTransitioning = false;
 
-  carousel.addEventListener('mouseup', () => {
-    isDown = false;
-    carousel.classList.remove('dragging');
-  });
-
-  carousel.addEventListener('mousemove', e => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - carousel.offsetLeft;
-    const walk = (x - startX) * 1.2; // velocidade
-    carousel.scrollLeft = scrollLeft - walk;
-  });
-  }
-
-  // Carousel do portfólio com auto-scroll pausado + arraste do usuário
-  const portfolioCarousel = document.querySelector('.portfolio-carousel');
-  if (portfolioCarousel) {
-    // Clonar itens para efeito infinito
-    const items = Array.from(portfolioCarousel.querySelectorAll('.portfolio-item'));
-    const itemCount = items.length;
-    
-    // Duplicar itens 3x para garantir loop suave
-    const clonedItems = [];
-    for (let i = 0; i < 3; i++) {
-      items.forEach(item => {
-        const clone = item.cloneNode(true);
-        clone.classList.add('cloned');
-        portfolioCarousel.appendChild(clone);
-        clonedItems.push(clone);
-      });
+    // Inicialização
+    function initCompactPortfolio() {
+        totalPhotos.textContent = total;
+        loadThumbnails();
+        loadPhoto(currentIndex);
+        setupEventListeners();
     }
 
-    let isDownPortfolio = false;
-    let startXPortfolio;
-    let scrollLeftPortfolio;
-    let isAutoScrolling = true;
-    let autoScrollTimeoutId;
-    const autoScrollInterval = 3000; // Pausa de 3 segundos entre slides
-    const pauseDuration = 5000; // Pausa de 5 segundos quando usuário interage
-
-    // Calcula a largura de um item + gap para saber quanto scrollar
-    function getScrollDistance() {
-      const firstItem = portfolioCarousel.querySelector('.portfolio-item');
-      if (!firstItem) return 0;
-      const itemWidth = firstItem.offsetWidth;
-      const gap = parseFloat(getComputedStyle(portfolioCarousel).gap) || 16;
-      return itemWidth + gap;
-    }
-
-    // Função para resetar posição quando chega ao fim (loop infinito)
-    function handleInfiniteScroll() {
-      const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
-      const threshold = maxScroll * 0.5; // Reseta quando chega na metade
-
-      if (portfolioCarousel.scrollLeft >= threshold) {
-        // Volta para o início sem transição (instantâneo)
-        portfolioCarousel.style.scrollBehavior = 'auto';
-        portfolioCarousel.scrollLeft = 0;
-        // Reativa smooth após resetar
-        setTimeout(() => {
-          portfolioCarousel.style.scrollBehavior = 'smooth';
-        }, 50);
-      }
-    }
-
-    // Auto-scroll para próximo item
-    function scrollToNextItem() {
-      if (isAutoScrolling && !isDownPortfolio) {
-        const scrollDistance = getScrollDistance();
-        portfolioCarousel.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+    // Carregar miniaturas
+    function loadThumbnails() {
+        thumbnailsContainer.innerHTML = '';
         
-        // Verifica reset após a animação
+        portfolioCompact.forEach((photo, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'thumbnail-compact';
+            if (index === currentIndex) thumbnail.classList.add('active');
+            
+            const img = document.createElement('img');
+            img.src = photo.url;
+            img.alt = `Thumb: ${photo.title}`;
+            img.loading = 'lazy';
+            
+            thumbnail.appendChild(img);
+            thumbnailsContainer.appendChild(thumbnail);
+            
+            thumbnail.addEventListener('click', () => {
+                if (isTransitioning || index === currentIndex) return;
+                currentIndex = index;
+                loadPhoto(currentIndex);
+                updateActiveThumbnail();
+            });
+        });
+    }
+
+    // Carregar foto com transição
+    function loadPhoto(index) {
+        if (isTransitioning) return;
+        
+        const photo = portfolioCompact[index];
+        
+        // Iniciar transição
+        isTransitioning = true;
+        currentPhoto.classList.add('fade-out');
+        
         setTimeout(() => {
-          handleInfiniteScroll();
-        }, 600);
-      }
-
-      // Agenda próximo slide
-      if (isAutoScrolling) {
-        autoScrollTimeoutId = setTimeout(scrollToNextItem, autoScrollInterval);
-      }
+            currentPhoto.src = photo.url;
+            currentPhoto.alt = photo.title;
+            photoTitle.textContent = photo.title;
+            photoDescription.textContent = photo.description;
+            currentNumber.textContent = index + 1;
+            
+            currentPhoto.classList.remove('fade-out');
+            currentPhoto.classList.add('fade-in');
+            
+            setTimeout(() => {
+                currentPhoto.classList.remove('fade-in');
+                isTransitioning = false;
+            }, 400);
+            
+            updateActiveThumbnail();
+            
+            // Rolagem suave para a miniatura ativa (em telas pequenas)
+            if (window.innerWidth < 768) {
+                const activeThumb = document.querySelector('.thumbnail-compact.active');
+                if (activeThumb) {
+                    activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            }
+        }, 300);
     }
 
-    // Iniciar auto-scroll após 2 segundos (delay inicial)
-    autoScrollTimeoutId = setTimeout(scrollToNextItem, 2000);
-
-    function pauseAutoScroll() {
-      isAutoScrolling = false;
-      if (autoScrollTimeoutId) clearTimeout(autoScrollTimeoutId);
+    // Atualizar miniatura ativa
+    function updateActiveThumbnail() {
+        document.querySelectorAll('.thumbnail-compact').forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentIndex);
+        });
     }
 
-    function resumeAutoScrollWithDelay() {
-      isAutoScrolling = true;
-      // Pausa mais longa após interação do usuário
-      autoScrollTimeoutId = setTimeout(scrollToNextItem, pauseDuration);
+    // Navegação
+    function nextPhoto() {
+        if (isTransitioning) return;
+        currentIndex = (currentIndex + 1) % total;
+        loadPhoto(currentIndex);
     }
 
-    // Handlers de interação — permite arrastar e pausa auto-scroll
-    portfolioCarousel.addEventListener('pointerdown', e => {
-      isDownPortfolio = true;
-      pauseAutoScroll();
-      portfolioCarousel.classList.add('dragging');
-      portfolioCarousel.style.scrollBehavior = 'auto';
-      portfolioCarousel.setPointerCapture(e.pointerId);
-      startXPortfolio = e.clientX;
-      scrollLeftPortfolio = portfolioCarousel.scrollLeft;
-    });
+    function prevPhoto() {
+        if (isTransitioning) return;
+        currentIndex = (currentIndex - 1 + total) % total;
+        loadPhoto(currentIndex);
+    }
 
-    portfolioCarousel.addEventListener('pointermove', e => {
-      if (!isDownPortfolio) return;
-      e.preventDefault();
-      const dx = e.clientX - startXPortfolio;
-      portfolioCarousel.scrollLeft = scrollLeftPortfolio - dx;
-    });
+    // Event Listeners
+    function setupEventListeners() {
+        prevBtn.addEventListener('click', prevPhoto);
+        nextBtn.addEventListener('click', nextPhoto);
+        
+        // Teclado
+        document.addEventListener('keydown', (e) => {
+            // Só funciona se o portfólio estiver visível na tela
+            const portfolioRect = document.querySelector('.portfolio-compacto').getBoundingClientRect();
+            const isVisible = portfolioRect.top < window.innerHeight && portfolioRect.bottom >= 0;
+            
+            if (!isVisible || isTransitioning) return;
+            
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevPhoto();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextPhoto();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                currentIndex = 0;
+                loadPhoto(currentIndex);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                currentIndex = total - 1;
+                loadPhoto(currentIndex);
+            }
+        });
+        
+        // Toque para mobile
+        let touchStartX = 0;
+        const photoWrapper = document.querySelector('.photo-wrapper');
+        
+        photoWrapper.addEventListener('touchstart', (e) => {
+            if (isTransitioning) return;
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        photoWrapper.addEventListener('touchend', (e) => {
+            if (isTransitioning) return;
+            
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            const threshold = 50;
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    nextPhoto();
+                } else {
+                    prevPhoto();
+                }
+            }
+        }, { passive: true });
+        
+        // Auto-play opcional (descomente se quiser)
+        /*
+        let autoPlayInterval;
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextPhoto, 5000);
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+        
+        // Iniciar auto-play
+        startAutoPlay();
+        
+        // Pausar auto-play quando o mouse estiver sobre o portfólio
+        const portfolioSection = document.querySelector('.portfolio-compacto');
+        portfolioSection.addEventListener('mouseenter', stopAutoPlay);
+        portfolioSection.addEventListener('mouseleave', startAutoPlay);
+        
+        // Pausar auto-play quando tocar em dispositivos móveis
+        portfolioSection.addEventListener('touchstart', stopAutoPlay);
+        */
+    }
 
-    portfolioCarousel.addEventListener('pointerup', e => {
-      isDownPortfolio = false;
-      portfolioCarousel.classList.remove('dragging');
-      portfolioCarousel.style.scrollBehavior = 'smooth';
-      try { portfolioCarousel.releasePointerCapture(e.pointerId); } catch (err) {}
-      handleInfiniteScroll();
-      resumeAutoScrollWithDelay(); // Retoma com pausa maior
-    });
-
-    portfolioCarousel.addEventListener('pointercancel', () => {
-      isDownPortfolio = false;
-      portfolioCarousel.classList.remove('dragging');
-      portfolioCarousel.style.scrollBehavior = 'smooth';
-      resumeAutoScrollWithDelay();
-    });
-
-    // Pausa auto-scroll quando usuário usa scroll manual (mouse wheel ou touch)
-    let scrollTimeout;
-    portfolioCarousel.addEventListener('scroll', () => {
-      if (!isDownPortfolio && isAutoScrolling) {
-        pauseAutoScroll();
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          resumeAutoScrollWithDelay();
-        }, 1000);
-      }
-    }, { passive: true });
-  }
-
-  // Setores agora são estáticos (grid fixo) - código de animação removido
-    // Suporte a roda do mouse para navegar horizontalmente
-    setoresGrid.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        setoresGrid.scrollLeft += e.deltaY;
-        e.preventDefault();
-      }
-    }, { passive: false });
-  }
+    // Inicializar
+    initCompactPortfolio();
+});

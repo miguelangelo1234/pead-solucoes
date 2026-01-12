@@ -1,7 +1,0 @@
-<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="400" fill="#f0f4ff"/>
-  <path d="M 0 0 L 600 0 L 600 200 L 0 200 Z" fill="#19a974" opacity="0.3"/>
-  <text x="300" y="170" font-size="32" fill="#0b2545" text-anchor="middle" font-weight="bold">Projeto 8</text>
-  <text x="300" y="210" font-size="18" fill="#1f2933" text-anchor="middle">Tratamento Água</text>
-  <text x="300" y="240" font-size="14" fill="rgba(31,41,51,0.7)" text-anchor="middle">Estação</text>
-</svg>
