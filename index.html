@@ -8,6 +8,13 @@
   <link rel="stylesheet" href="stylles.css" />
   <!-- Font Awesome para ícones do portfólio -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @media (max-width: 768px) {
+      .keyboard-hint {
+        display: none;
+      }
+    }
+  </style>
   <script src="whatsapp-form.js" defer></script>
 </head>
 <body>
@@ -251,8 +258,6 @@
                 <small><i class="fas fa-keyboard"></i> Use as setas do teclado para navegar</small>
               </div>
             </div>
-            
-            <div class="thumbnails-compact" id="compact-thumbnails"></div>
           </div>
         </div>
     </div>
@@ -297,6 +302,21 @@
               garantindo qualidade, segurança e conformidade com normas técnicas.
             </p>
           </article>
+
+          <article class="card">
+            <h3>Reparo em lona PEAD</h3>
+            <p>Serviços especializados de reparo em lonas de PEAD, garantindo durabilidade e funcionalidade.</p>
+          </article>
+
+          <article class="card">
+            <h3>Solda em lona shore gripe</h3>
+            <p>Solda especializada em lonas shore grip para aplicações marinhas e industriais.</p>
+          </article>
+
+          <article class="card">
+            <h3>Solda em PP, PPR</h3>
+            <p>Serviços de solda em tubulações de PP e PPR, com alta resistência e versatilidade.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -336,7 +356,7 @@
           </div>
         </div>
 
-        <!-- GALERIA DE IMAGENS COM FUNDO TRANSPARENTE -->
+        <!-- GALERIA DE IMAGENS  -->
         <div class="galeria-produtos">
           <h3 class="galeria-titulo">Nossas Soluções em Destaque</h3>
           <div class="produtos-grid">
@@ -689,7 +709,7 @@
       // Pré-carregar imagens
       function preloadImages() {
         imagesLoaded = 0;
-        
+
         portfolioCompact.forEach((photo, index) => {
           checkImageExists(photo.url, function(exists) {
             if (!exists) {
@@ -698,10 +718,9 @@
               portfolioCompact[index].url = getFallbackImage();
             }
             imagesLoaded++;
-            
+
             if (imagesLoaded === total) {
               // Todas as imagens verificadas, iniciar o portfólio
-              loadThumbnails();
               loadPhoto(currentIndex);
               setupEventListeners();
             }
