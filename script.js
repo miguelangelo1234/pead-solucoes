@@ -66,118 +66,74 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
-// Placeholder para envio do formulário (integração com EmailJS)
-const form = document.querySelector('.form-contato');
-if (form) {
-  // Inicializar EmailJS (necessário antes de usar)
-  emailjs.init("YOUR_PUBLIC_KEY"); // Substitua pela sua public key do EmailJS
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mensagem = document.getElementById('mensagem').value.trim();
-
-    // Validação simples
-    if (!nome || !email || !mensagem) {
-      alert('Por favor, preencha todos os campos.');
-      return;
-    }
-
-    // Mostrar feedback ao usuário
-    const btn = form.querySelector('button[type="submit"]');
-    const btnOriginalText = btn.textContent;
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    try {
-      // Enviar email via EmailJS
-      await emailjs.send(
-        'service_pead', // Substitua pelo seu Service ID
-        'template_pead', // Substitua pelo seu Template ID
-        {
-          from_name: nome,
-          from_email: email,
-          message: mensagem,
-          to_email: 'contato@pead.com.br' // Email destino
-        }
-      );
-
-      // Sucesso
-      alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
-      form.reset();
-    } catch (error) {
-      console.error('Erro ao enviar:', error);
-      alert('Erro ao enviar a mensagem. Tente novamente mais tarde.');
-    } finally {
-      btn.textContent = btnOriginalText;
-      btn.disabled = false;
-    }
-  });
-}
 document.addEventListener('DOMContentLoaded', function() {
     // Dados do portfólio compacto - Imagens dos trabalhos
     const portfolioCompact = [
         {
             id: 1,
-            title: "Solda de Tubulações PEAD",
-            description: "Processo de solda em tubulações de alta densidade",
-            url: "imagens/trabalho-1.svg"
+            title: "Solda de Tubulação PEAD",
+            description: "Instalação de sistema de distribuição de água",
+            url: "imagens/portfolio/foto1.jpeg"
         },
         {
             id: 2,
-            title: "Equipamentos de Termofusão",
-            description: "Máquinas especializadas para fusão de tubos",
-            url: "imagens/trabalho-2.svg"
+            title: "Projeto de Saneamento",
+            description: "Rede de esgoto em PEAD para obra pública",
+            url: "imagens/portfolio/foto2.jpeg"
         },
         {
             id: 3,
-            title: "Instalação em Engenharia Civil",
-            description: "Aplicação em projetos de infraestrutura",
-            url: "imagens/trabalho-3.svg"
+            title: "Treinamento Técnico",
+            description: "Capacitação em termofusão para equipe",
+            url: "imagens/portfolio/foto3.jpeg"
         },
         {
             id: 4,
-            title: "Conexões de Eletrofusão",
-            description: "Conexões certificadas para máxima segurança",
-            url: "imagens/trabalho-4.svg"
+            title: "Sistema Industrial",
+            description: "Tubulação PEAD para indústria química",
+            url: "imagens/portfolio/foto4.jpeg"
         },
         {
             id: 5,
-            title: "Treinamentos Técnicos",
-            description: "Capacitação de equipes em solda PEAD",
-            url: "imagens/trabalho-5.svg"
+            title: "Infraestrutura Rural",
+            description: "Projeto de irrigação com PEAD",
+            url: "imagens/portfolio/foto5.jpeg"
         },
         {
             id: 6,
-            title: "Projetos de Saneamento",
-            description: "Soluções para redes de água e esgoto",
-            url: "imagens/trabalho-6.svg"
+            title: "Manutenção Preventiva",
+            description: "Inspeção e manutenção de rede existente",
+            url: "imagens/portfolio/foto6.jpeg"
         },
         {
             id: 7,
-            title: "Indústria Farmacêutica",
-            description: "Aplicações em ambientes controlados",
-            url: "imagens/trabalho-7.svg"
+            title: "Instalação de Conexões",
+            description: "Eletrofusão em diâmetro DN 200",
+            url: "imagens/portfolio/foto7.jpeg"
         },
         {
             id: 8,
-            title: "Distribuição de Gás",
-            description: "Sistemas seguros para gás natural",
-            url: "imagens/trabalho-8.svg"
+            title: "Obra de Gás Natural",
+            description: "Rede de distribuição de gás com PEAD",
+            url: "imagens/portfolio/foto8.jpeg"
         },
         {
             id: 9,
-            title: "Indústria Química",
-            description: "Resistência química em processos industriais",
-            url: "imagens/trabalho-9.svg"
+            title: "Sistema de Drenagem",
+            description: "Projeto sustentável para controle de águas pluviais",
+            url: "imagens/portfolio/foto9.jpeg"
         },
         {
             id: 10,
-            title: "Suporte Técnico Especializado",
-            description: "Acompanhamento completo de projetos",
-            url: "imagens/trabalho-10.svg"
+            title: "Certificação de Qualidade",
+            description: "Testes e certificações em obra finalizada",
+            url: "imagens/portfolio/foto10.jpeg"
+        },
+        {
+            id: 11,
+            title: "Projeto Especializado",
+            description: "Soluções customizadas para necessidades específicas",
+            url: "imagens/portfolio/foto11.jpeg"
         }
     ];
 
@@ -370,3 +326,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar
     initCompactPortfolio();
 });
+
+
