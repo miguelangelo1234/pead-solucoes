@@ -32,37 +32,6 @@ pead-solu-oes/
 └── README.md           # Este arquivo
 ```
 
-## 🛠️ Instalação e Execução
-
-### Pré-requisitos
-- Node.js (versão 14 ou superior)
-- NPM ou Yarn
-
-### Instalação
-
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/pead-solu-oes.git
-cd pead-solu-oes
-```
-
-2. Instale as dependências:
-```bash
-npm install
-```
-
-3. Configure as variáveis de ambiente (opcional para funcionalidades avançadas):
-```bash
-cp .env.example .env
-# Edite o .env com suas configurações
-```
-
-4. Execute o servidor:
-```bash
-npm start
-```
-
-O site estará disponível em `http://localhost:3000`
 
 ## 📱 Funcionalidades
 
