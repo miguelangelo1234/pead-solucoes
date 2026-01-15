@@ -145,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalPhotos = document.getElementById('compact-total');
     const prevBtn = document.getElementById('compact-prev');
     const nextBtn = document.getElementById('compact-next');
-    const thumbnailsContainer = document.getElementById('compact-thumbnails');
 
     // Estado
     let currentIndex = 0;
@@ -155,35 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicialização
     function initCompactPortfolio() {
         totalPhotos.textContent = total;
-        loadThumbnails();
         loadPhoto(currentIndex);
         setupEventListeners();
-    }
-
-    // Carregar miniaturas
-    function loadThumbnails() {
-        thumbnailsContainer.innerHTML = '';
-        
-        portfolioCompact.forEach((photo, index) => {
-            const thumbnail = document.createElement('div');
-            thumbnail.className = 'thumbnail-compact';
-            if (index === currentIndex) thumbnail.classList.add('active');
-            
-            const img = document.createElement('img');
-            img.src = photo.url;
-            img.alt = `Thumb: ${photo.title}`;
-            img.loading = 'lazy';
-            
-            thumbnail.appendChild(img);
-            thumbnailsContainer.appendChild(thumbnail);
-            
-            thumbnail.addEventListener('click', () => {
-                if (isTransitioning || index === currentIndex) return;
-                currentIndex = index;
-                loadPhoto(currentIndex);
-                updateActiveThumbnail();
-            });
-        });
     }
 
     // Carregar foto com transição
@@ -210,25 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentPhoto.classList.remove('fade-in');
                 isTransitioning = false;
             }, 400);
-            
-            updateActiveThumbnail();
-            
-            // Rolagem suave para a miniatura ativa (em telas pequenas)
-            if (window.innerWidth < 768) {
-                const activeThumb = document.querySelector('.thumbnail-compact.active');
-                if (activeThumb) {
-                    activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }
-            }
         }, 300);
     }
 
-    // Atualizar miniatura ativa
-    function updateActiveThumbnail() {
-        document.querySelectorAll('.thumbnail-compact').forEach((thumb, index) => {
-            thumb.classList.toggle('active', index === currentIndex);
-        });
-    }
+
 
     // Navegação
     function nextPhoto() {
