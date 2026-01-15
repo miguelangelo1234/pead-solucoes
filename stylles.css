@@ -845,16 +845,15 @@ ul {
 }
 
 .thumbnail-compact {
-    width: 80px; /* Aumentado um pouco */
-    height: 60px; /* Aumentado um pouco */
-    border-radius: 6px;
-    overflow: hidden;
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
     cursor: pointer;
     opacity: 0.7;
     transition: all 0.3s ease;
     border: 2px solid transparent;
-    position: relative;
-    background-color: var(--white);
+    transition: border-color 0.3s ease;
 }
 
 .thumbnail-compact:hover {
@@ -866,55 +865,9 @@ ul {
 .thumbnail-compact.active {
     opacity: 1;
     border-color: var(--green);
-    box-shadow: 0 4px 12px rgba(25, 169, 116, 0.25);
 }
 
-.thumbnail-compact.active::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background-color: var(--green);
-    z-index: 1;
-}
 
-.thumbnail-compact img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Para miniaturas, cover é melhor */
-}
-
-.keyboard-hint {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.keyboard-hint small {
-    color: var(--gray);
-    font-size: 0.85rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    background-color: rgba(11, 37, 69, 0.03);
-    padding: 0.375rem 0.75rem;
-    border-radius: 20px;
-}
-
-.keyboard-hint i {
-    color: var(--green);
-}
-
-/* Indicador de carregamento */
-.loading-indicator {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--gray);
-    font-size: 0.9rem;
-}
 
 /* Responsividade do portfólio */
 @media (max-width: 900px) {
