@@ -1850,3 +1850,21 @@ ul {
     max-height: 34px;
   }
 }
+
+/* Estilos para a bandeira ao lado de "TERRITÓRIO NACIONAL" */
+.flag-icon {
+  width: 20px;
+  height: auto;
+  vertical-align: middle;
+  display: inline;
+}
+
+.national-territory {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .flag-icon {
+    width: 16px;
+  }
+}
