@@ -4,13 +4,12 @@
   "version": "1.0",
   "description": "Demonstrates fixing ES Modules error in Chrome extensions",
   "background": {
-    "service_worker": "background.js",
-    "type": "module"
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content-loader.js"]
+      "js": ["content-script.js"]
     }
   ],
   "permissions": []
